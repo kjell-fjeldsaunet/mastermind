@@ -15,7 +15,7 @@ class LoadingScreen
     end
     yield.tap do # After yielding to the block, save the return value
       iter = false   # Tell the thread to exit, cleaning up after itself
-      spinner.join   # and wait for it to do so.
-    end              # Use the block's return value as the method's
+      spinner.join   # and wait for it to do so. Use the block's return value as the method's
+    end
   end
 end

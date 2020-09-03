@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Class will keep score and get input from player
 class Player
   attr_accessor :score, :name
   def initialize

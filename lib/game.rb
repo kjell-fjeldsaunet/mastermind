@@ -2,7 +2,6 @@
 
 require_relative 'ai_player'
 require_relative 'player'
-require_relative 'game_board'
 require_relative 'messages'
 require_relative 'match_score'
 # Keep score, count rounds and contain all game-parts
@@ -27,12 +26,12 @@ class Game
     p "debugging mode: secret code: #{secret_code}"
     @guess = nil
     match_score = {}
-    while @guess != secret_code && @round_score < 13
+    while @guess != secret_code && @round_score < 12
       @round_score += 1
       @guess = codebreaker.make_guess(@round_score, match_score)
       match_score = MatchScore.calculate_score(@guess, secret_code)
       puts "#{codebreaker.name} guessed #{@guess}. It had #{match_score['exact']} exact matches and "\
-      "#{match_score['color_only']} correct colors.\nOnly #{12 - round_score} guesses left!"
+      "#{match_score['color_only']} correct colors.\nOnly #{12 - @round_score} guesses left!"
     end
     puts "#{codebreaker.name} used #{@round_score} guesses. " # Add points modifier: 13 points if it is not guessed
     puts "#{codemaker.name} gets #{@round_score} points!"

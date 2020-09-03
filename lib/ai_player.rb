@@ -1,5 +1,4 @@
 require 'set'
-require_relative 'game_board'
 require_relative 'match_score'
 
 # Generate code and make guess
@@ -38,7 +37,7 @@ class AIPlayer
       @guess = @possible_answers.to_a.sample
     else
       @guess = 'rrgg'
-      @possible_answers = @all_answers.dup
+      @possible_answers = @all_answers.dup # Reset pool of answers so it can be used in the next guess
     end
     @guess.chars
   end
